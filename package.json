@@ -1,0 +1,42 @@
+{
+  "name": "memer-bot-v2",
+  "version": "1.0.0",
+  "description": "A multi-purpose discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliangerard/memer-bot-v2.git"
+  },
+  "keywords": [
+    "memer",
+    "discord",
+    "bot",
+    "multipurpose",
+    "music",
+    "welcome"
+  ],
+  "author": "Elian Gerard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliangerard/memer-bot-v2/issues"
+  },
+  "homepage": "https://github.com/eliangerard/memer-bot-v2#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.8.0",
+    "@discordjs/voice": "^0.11.0",
+    "@distube/soundcloud": "^1.2.1",
+    "@distube/spotify": "^1.3.2",
+    "@distube/yt-dlp": "^1.1.3",
+    "bufferutil": "^4.0.6",
+    "discord-speech-recognition": "github:eliangerard/discord-speech-recognition",
+    "discord.js": "^14.1.2",
+    "distube": "^4.0.3",
+    "ffmpeg-static": "^5.0.2",
+    "libsodium": "^0.7.10",
+    "sodium": "^3.0.2",
+    "utf-8-validate": "^5.0.9"
+  }
+}

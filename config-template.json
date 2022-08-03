@@ -1,0 +1,41 @@
+{
+    "token": "DISCORD_BOT_TOKEN",
+    "mongodb": {
+        "stringKey" : "MONGODB_STRING_CONNECTION",
+        "dbname" : "MONGODB_DATABASE_NAME"
+    },
+    "botURL": "AVATAR_IMAGE_URL",
+    "spotifyClientID" : "SPOTIFY_API_CLIENTID",
+    "spotifyClientSecret" : "SPOTIFY_API_CLIENTSECRET",
+    "voicePrefix" : ["something", "somting"],
+    "emoji": {
+        "play": "▶️",
+        "stop": "⏹️",
+        "queue": "📄",
+        "success": "☑️",
+        "repeat": "🔁",
+        "error": "❌",
+        "map": "🗺️",
+	    "sad": "😢"
+    },
+    "presence":{
+        "activity":"I'm ready!",
+        "type": "STREAMING",
+        "url": "https://www.twitch.tv/"
+    },
+    "minecraft":{
+        "host": "SERVER_HOST_IP",
+        "port": 21,
+        "user": "FTP_SERVER_USER",
+        "password": "FTP_SERVER_PASSWORD",
+        "keepalive": 5000
+    }, 
+    "apis": {
+        "rapidapikey": "RAPID_API_KEY (THE SAME IN EVERY API)",
+        "traductor" : {
+            "default": "DEFAULT TRADUCTION LANG ('en', 'es', 'ru', etc.)"
+        },
+        "giphy" : "GIPHY_API_KEY",
+        "genius" : "GENIUS_API_KEY"
+    }
+}
