@@ -9,9 +9,10 @@ module.exports = {
 	    if (!command) return;
 
     	try {
+			interaction.deferReply();
 			if(command.inVoice){
 				if(interaction.member.voice.channel === undefined)
-						return interaction.reply({ content: 'No estás en un canal de voz', ephemeral:true });
+						return interaction.editReply({ content: 'No estás en un canal de voz', ephemeral:true });
 				let voiceConnection;
 				
 				if(!interaction.guild.members.me.voice.channel)
@@ -25,7 +26,7 @@ module.exports = {
 			await command.execute(interaction, client);
 	    } catch (error) {
 		    console.error(error);
-    		await interaction.reply({ content: 'Hubo un error con este comando', ephemeral: true });
+    		await interaction.editReply({ content: 'Hubo un error con este comando', ephemeral: true });
 	    }
 	},
 };

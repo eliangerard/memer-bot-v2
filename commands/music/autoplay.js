@@ -17,7 +17,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({text: 'Memer', iconURL: client.botURL});
 
-            return interaction.reply( { embeds: [embed] } ).then(msg => {
+            return interaction.editReply( { embeds: [embed] } ).then(msg => {
                 setTimeout(() => msg.delete(), 15000)
             });
         }
@@ -30,7 +30,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({text: 'Memer', iconURL: client.botURL});
 
-            return interaction.reply( { embeds: [embed] } ).then(msg => {
+            return interaction.editReply( { embeds: [embed] } ).then(msg => {
                 setTimeout(() => msg.delete(), 15000)
             });
         } catch (e) {
@@ -41,7 +41,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({ text: 'Memer', iconURL: client.botURL });
 
-            return interaction.reply( { embeds: [embed] } ).then(msg => {
+            return interaction.editReply( { embeds: [embed] } ).then(msg => {
                 setTimeout(() => msg.delete(), 15000)
             });
         }

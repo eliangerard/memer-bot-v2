@@ -9,7 +9,6 @@ module.exports = {
     voiceCommand : ['cuál','cual'],
     voiceParams : false,
 	async execute(interaction, client) {
-        interaction.deferReply();
         const queue = client.distube.getQueue(interaction.guild);
         if (!queue) {
             const embed = new EmbedBuilder()

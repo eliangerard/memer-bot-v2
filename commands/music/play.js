@@ -9,7 +9,6 @@ module.exports = {
     voiceCommand : ['reproduce', 'pon'],
 	async execute(interaction, client) {
         const song = interaction.options.getString('canción');
-        interaction.deferReply();
         client.interaction = interaction;
         return client.distube.play(interaction.member.voice.channel, song, client);
 	},
