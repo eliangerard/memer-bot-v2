@@ -15,10 +15,10 @@ module.exports = {
                 .setTitle(client.emotes.play + " Reproduciendo")
                 .setColor("#FFFFFF")
                 .addFields(
-                    { name: "Canción: ", value: song.name },
-                    { name: "Duración: ", value: song.formattedDuration, inline: true },
-                    { name: "Tiempo: ", value: queue.formattedCurrentTime, inline: true},
-                    { name: "Solicitada por: ", value: "<@!" + song.user + ">", inline: true },
+                    { name: "Canción: ", value: queue.songs[0].name },
+                    { name: "Duración: ", value: queue.songs[0].formattedDuration, inline: true },
+                    { name: "Tiempo: ", value: queue.songs[0].formattedCurrentTime, inline: true},
+                    { name: "Solicitada por: ", value: "<@!" + queue.songs[0].user + ">", inline: true },
                     { name: "Ajustes: ", value: client.distube.status(queue) }
                 )
                 .setThumbnail(queue.thumbnail)
@@ -49,10 +49,10 @@ module.exports = {
                 .setTitle(client.emotes.play + " Reproduciendo")
                 .setColor("#FFFFFF")
                 .addFields(
-                    { name: "Canción: ", value: song.name },
-                    { name: "Duración: ", value: song.formattedDuration, inline: true },
-                    { name: "Tiempo: ", value: queue.formattedCurrentTime, inline: true},
-                    { name: "Solicitada por: ", value: "<@!" + song.user + ">", inline: true },
+                    { name: "Canción: ", value: queue.songs[0].name },
+                    { name: "Duración: ", value: queue.songs[0].formattedDuration, inline: true },
+                    { name: "Tiempo: ", value: queue.songs[0].formattedCurrentTime, inline: true},
+                    { name: "Solicitada por: ", value: "<@!" + queue.songs[0].user + ">", inline: true },
                     { name: "Ajustes: ", value: client.distube.status(queue) }
                 )
                 .setThumbnail(queue.thumbnail)
