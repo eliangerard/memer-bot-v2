@@ -60,7 +60,7 @@ module.exports = {
                 setTimeout(() => msg.delete(), 15000)
             });
         }
-        if (queue.pause) {
+        if (queue.paused) {
             queue.resume()
             const embed = new EmbedBuilder()
             .setTitle(client.emotes.success+" Resume")
