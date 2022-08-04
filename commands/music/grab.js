@@ -5,7 +5,7 @@ module.exports = {
 		.setName('grab')
         .setDescription('Te envía el link de la canción por privado'),
     inVoice : false,
-    voiceCommand : ['agarrar'],
+    voiceCommand : ['agarrar', 'grab'],
 	async execute(interaction, client) {
         const queue = client.distube.getQueue(interaction.guild);
         if(!queue)

@@ -6,7 +6,7 @@ module.exports = {
 		.setName('pause')
         .setDescription('Pausa y resume la reproducción de la música'),
     inVoice : true,
-    voiceCommand : ['pausa'],
+    voiceCommand : ['pausa', 'pausar'],
 	async execute(interaction, client) {
         const queue = client.distube.getQueue(interaction.guild);
         if (!queue) {

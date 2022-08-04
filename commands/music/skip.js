@@ -6,7 +6,7 @@ module.exports = {
 		.setName('skip')
         .setDescription('Saltea la canción que se esté reproduciendo'),
     inVoice : true,
-    voiceCommand : ['siguiente'],
+    voiceCommand : ['siguiente', 'skip'],
 	async execute(interaction, client) {
         const queue = client.distube.getQueue(interaction.guild);
         if (!queue) {

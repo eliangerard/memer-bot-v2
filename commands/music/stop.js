@@ -6,7 +6,7 @@ module.exports = {
 		.setName('stop')
         .setDescription('Detiene la reproducción y borra la cola'),
     inVoice : true,
-    voiceCommand : ['cállate'],
+    voiceCommand : ['cállate', 'detente'],
 	async execute(interaction, client) {
         const queue = client.distube.getQueue(interaction.guild);
         if (!queue) {

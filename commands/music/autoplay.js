@@ -6,7 +6,7 @@ module.exports = {
 		.setName('autoplay')
         .setDescription('Activa o desactiva el modo autoplay'),
     inVoice : true,
-    voiceCommand : ['autoplay'],
+    voiceCommand : ['autoplay', 'auto'],
 	async execute(interaction, client, voice) {
         const queue = client.distube.getQueue(message);
         if (!queue) {
