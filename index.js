@@ -5,6 +5,7 @@ const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { addSpeechEvent } = require("discord-speech-recognition");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
 client.config = require("./config.json")
@@ -27,6 +28,8 @@ client.distube = new DisTube(client, {
       new YtDlpPlugin()
     ]
 });
+
+addSpeechEvent(client, { group: client.config.clientId , lang: client.config.lang });
 
 client.distube.status = queue => `Volumen: \`${queue.volume}%\` | Filtro: \`${queue.filters.names.join(", ") || "Off"}\` | Repitiendo: \`${queue.repeatMode ? queue.repeatMode === 2 ? "Toda la cola" : "Esta canción" : "Nada"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
