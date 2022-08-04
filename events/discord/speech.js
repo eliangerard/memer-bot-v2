@@ -12,7 +12,7 @@ module.exports = {
 		
 		const voiceCommand = content.shift();
 		console.log(`Comando dicho: ${voiceCommand}`);
-		const command = client.commands.find(command => command.voiceCommand ? command.voiceCommand.includes(voiceCommand) : false );
+		const command = client.commands.find(command => command.voiceCommand && command.voiceCommand.includes(voiceCommand) );
 		if(!command)
 			return;
 
