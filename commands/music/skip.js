@@ -8,6 +8,7 @@ module.exports = {
     inVoice : true,
     voiceCommand : ['siguiente', 'skip'],
 	async execute(interaction, client) {
+        interaction.deferReply();
         const queue = client.distube.getQueue(interaction.guild);
         if (!queue) {
             const embed = new EmbedBuilder()
@@ -16,7 +17,7 @@ module.exports = {
                 .setDescription("No se está reproduciendo nada")
                 .setTimestamp()
                 .setFooter({ text: 'Memer', iconURL: client.botURL })
-            return interaction.reply( { embeds: [embed] } ).then(msg => {
+            return interaction.editReply( { embeds: [embed] } ).then(msg => {
                 setTimeout(() => msg.delete(), 15000)
             });
         }
@@ -25,7 +26,7 @@ module.exports = {
                 .setTitle(client.emotes.success+" Skip")
                 .setColor("#FFFFFF");
 
-            interaction.reply( { embeds: [embed] } ).then(msg => {
+            interaction.editReply( { embeds: [embed] } ).then(msg => {
                 setTimeout(() => msg.delete(), 15000)
             });
 
@@ -40,7 +41,7 @@ module.exports = {
             .setTimestamp()
             .setFooter({text: 'Memer', iconURL: client.botURL});
 
-            interaction.reply( { embeds: [embed] } ).then(msg => {
+            interaction.editReply( { embeds: [embed] } ).then(msg => {
                 setTimeout(() => msg.delete(), 15000)
             });
         }
