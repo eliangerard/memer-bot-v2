@@ -34,7 +34,8 @@ module.exports = {
                     { name: "Solicitada por: ", value: "<@!" + queue.songs[0].user + ">", inline: true },
                     { name: "Ajustes: ", value: client.distube.status(queue) }
                 )
-                .setThumbnail(queue.songs[0].thumbnail)
+                .setThumbnail(client.botURL)
+                .setImage(queue.songs[0].thumbnail)
                 .setTimestamp()
                 .setFooter({text: 'Memer', iconURL: client.botURL});
 
@@ -80,7 +81,8 @@ module.exports = {
                     { name: "Solicitada por: ", value: "<@!" + queue.songs[0].user + ">", inline: true },
                     { name: "Ajustes: ", value: client.distube.status(queue) }
                 )
-                .setThumbnail(queue.songs[0].thumbnail)
+                .setThumbnail(client.botURL)
+                .setImage(queue.songs[0].thumbnail)
                 .setTimestamp()
                 .setFooter({text: 'Memer', iconURL: client.botURL});
 

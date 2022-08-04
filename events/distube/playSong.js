@@ -3,7 +3,6 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
 	name: 'playSong',
 	execute(queue, song, client) {
-    console.log('reproduciendoooo');
     queue.setVolume(100);
     const embed = new EmbedBuilder()
       .setTitle(client.emotes.play + " Reproduciendo")
@@ -15,6 +14,7 @@ module.exports = {
         { name: "Ajustes: ", value: client.distube.status(queue) }
       )
       .setThumbnail(client.botURL)
+      .setImage(queue.songs[0].thumbnail)
       .setTimestamp()
       .setFooter({text:'Memer', iconURL: client.botURL});
       
