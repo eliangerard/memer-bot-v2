@@ -9,7 +9,7 @@ module.exports = {
 	    if (!command) return;
 
     	try {
-			interaction.deferReply();
+			await interaction.deferReply();
 			if(command.inVoice){
 				if(interaction.member.voice.channel === undefined)
 						return interaction.editReply({ content: 'No estás en un canal de voz', ephemeral:true });
