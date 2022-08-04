@@ -10,7 +10,7 @@ module.exports = {
         const queue = client.distube.getQueue(interaction.guild);
         if(!queue)
             return interaction.reply({content: "No se está reproduciendo nada", ephemeral: true});
-
+        console.log(queue.songs[0].streamURL);
         interaction.user.send(queue.songs[0].url);
         return interaction.reply({content: "tulún :)", ephemeral: true});
 	},
