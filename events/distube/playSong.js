@@ -13,7 +13,7 @@ module.exports = {
         { name: "Solicitada por: ", value: "<@!" + song.user + ">", inline: true },
         { name: "Ajustes: ", value: client.distube.status(queue) }
       )
-      .setThumbnail(client.botURL)
+      .setThumbnail(client.config.cdGif)
       .setImage(queue.songs[0].thumbnail)
       .setTimestamp()
       .setFooter({text:'Memer', iconURL: client.botURL});

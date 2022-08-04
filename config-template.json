@@ -1,9 +1,12 @@
 {
+    "clientId" : "HERE",
     "token": "DISCORD_BOT_TOKEN",
     "mongodb": {
         "stringKey" : "MONGODB_STRING_CONNECTION",
         "dbname" : "MONGODB_DATABASE_NAME"
     },
+    "lang": "es-MX",
+    "cdGif": "https://c.tenor.com/GqAwMt01UXgAAAAi/cd.gif",
     "botURL": "AVATAR_IMAGE_URL",
     "spotifyClientID" : "SPOTIFY_API_CLIENTID",
     "spotifyClientSecret" : "SPOTIFY_API_CLIENTSECRET",
