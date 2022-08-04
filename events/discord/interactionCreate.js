@@ -11,6 +11,11 @@ module.exports = {
     	try {
 			if(command.inVoice && interaction.member.voice.channel === undefined)
 					return interaction.reply({ content: 'No estás en un canal de voz', ephemeral:true });
+			
+			if(!interaction.guild.members.me.voice.channel){
+				const voiceJoined = await client.distube.voices.join(interaction.member.voice.channel);
+				voiceJoined.setSelfDeaf(false);
+			}
             client.channel = interaction.channel;
     		await command.execute(interaction, client);
 	    } catch (error) {
