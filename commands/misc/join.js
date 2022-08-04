@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,8 +10,12 @@ module.exports = {
 
         const voiceJoined = await client.distube.voices.join(interaction.member.voice.channel);
 		voiceJoined.setSelfDeaf(false);
-		await interaction.editReply('Listo para escucharte :)').then(msg => {
-			setTimeout(()=> msg.delete(), 15000);
-		});
+		const embed = new EmbedBuilder()
+                .setTitle(client.emotes.success+" Listo")
+                .setColor("#FFFFFF");
+
+        interaction.editReply( { embeds: [embed] } ).then(msg => {
+            setTimeout(() => msg.delete(), 15000)
+        });
 	},
 };
