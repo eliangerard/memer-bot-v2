@@ -9,18 +9,20 @@ module.exports = {
 	    if (!command) return;
 
     	try {
-			if(command.inVoice && interaction.member.voice.channel === undefined)
-					return interaction.reply({ content: 'No estás en un canal de voz', ephemeral:true });
-			let voiceConnection;
-			
-			if(!interaction.guild.members.me.voice.channel)
-				voiceConnection = await client.distube.voices.join(interaction.member.voice.channel);
-			else
-				voiceConnection = await client.distube.voices.get(interaction.member.voice.channel);
+			if(command.inVoice){
+				if(interaction.member.voice.channel === undefined)
+						return interaction.reply({ content: 'No estás en un canal de voz', ephemeral:true });
+				let voiceConnection;
+				
+				if(!interaction.guild.members.me.voice.channel)
+					voiceConnection = await client.distube.voices.join(interaction.member.voice.channel);
+				else
+					voiceConnection = await client.distube.voices.get(interaction.member.voice.channel);
 
-			voiceConnection.setSelfDeaf(false);
-            client.channel = interaction.channel;
-    		await command.execute(interaction, client);
+				voiceConnection.setSelfDeaf(false);
+			}
+			client.channel = interaction.channel;
+			await command.execute(interaction, client);
 	    } catch (error) {
 		    console.error(error);
     		await interaction.reply({ content: 'Hubo un error con este comando', ephemeral: true });
