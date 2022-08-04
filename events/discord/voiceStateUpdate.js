@@ -6,7 +6,7 @@ module.exports = {
 	once: false,
 	execute(oldState, newState, client) {
 		if(newState.member == newState.guild.members.me && newState.channel != null)
-            console.log(getVoiceConnection(newState.guild.id) + " - " + getGroups().forEach(value => console.log(value)));
+            console.log(getVoiceConnection(newState.guild.id) + " - " + getGroups().get(1));
 		    addSpeechEvent(client, { group: '1004267879933415444',lang: client.config.lang });
 	},
 };
