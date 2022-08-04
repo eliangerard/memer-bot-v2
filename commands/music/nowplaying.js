@@ -38,7 +38,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({text: 'Memer', iconURL: client.botURL});
 
-            interaction.editReply({ embeds: [embed] }).then(msg => {
+            interaction.reply({ embeds: [embed] }).then(msg => {
                 setTimeout(() => msg.delete(), 15000)
             });
         }
