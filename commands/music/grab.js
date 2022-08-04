@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('grab')
         .setDescription('Te envía el link de la canción por privado'),
-    inVoice : true,
+    inVoice : false,
     voiceCommand : ['agarrar'],
 	async execute(interaction, client) {
         const queue = client.distube.getQueue(interaction.guild);
