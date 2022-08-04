@@ -11,9 +11,6 @@ module.exports = {
 
         const voiceJoined = await client.distube.voices.join(interaction.member.voice.channel);
 		voiceJoined.setSelfDeaf(false);
-		console.log(getVoiceConnection(interaction.guildId) + " - " + getGroups().forEach(value => console.log(value)));
-
-		addSpeechEvent(client, { group: '1004267879933415444',lang: client.config.lang });
 		await interaction.reply({content: 'Listo para escucharte :)', ephemeral: true });
 	},
 };
