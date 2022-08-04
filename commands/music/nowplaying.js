@@ -6,7 +6,7 @@ module.exports = {
 		.setName('np')
         .setDescription('Muestra lo que se está reproduciendo en este momento'),
     inVoice : true,
-    voiceCommand : ['cual'],
+    voiceCommand : ['cuál','cual'],
     voiceParams : false,
 	async execute(interaction, client) {
         const queue = client.distube.getQueue(message)
