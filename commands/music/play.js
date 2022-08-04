@@ -15,7 +15,6 @@ module.exports = {
 	},
     async executeVoice (content, msg, client) {
         if(content.length == 0) return;
-        client.interaction = null;
         return client.distube.play(msg.member.voice.channel, content, client);
     }
 };

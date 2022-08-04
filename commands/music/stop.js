@@ -34,7 +34,6 @@ module.exports = {
         });
 	},
     async executeVoice (content, msg, client) {
-        client.interaction = null;
         const queue = client.distube.getQueue(msg.guild);
         if (!queue) {
             const embed = new EmbedBuilder()

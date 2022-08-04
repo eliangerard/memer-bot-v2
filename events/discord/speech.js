@@ -18,6 +18,7 @@ module.exports = {
 
 		console.log(command.voiceCommand);
 		try {
+			client.interaction = null;
     		await command.executeVoice(content.join(' '), msg, client);
 	    } catch (error) {
 		    console.error(error);
