@@ -11,14 +11,14 @@ module.exports = {
         if(!queue)
             return interaction.reply({content: "No se está reproduciendo nada", ephemeral: true});
 
-        interaction.user.send(queue.currentLink);
+        interaction.user.send(queue.songs[0].url);
         return interaction.reply({content: "tulún :)", ephemeral: true});
 	},
     async executeVoice (content, msg, client) {
-        const queue = client.distube.getQueue(interaction.guild);
+        const queue = client.distube.getQueue(msg.guild);
         if(!queue)
             return msg.author.send('No se está reproduciendo nada');
 
-        return msg.author.send(client.distube.getQueue(msg.guild).currentLink);
+        return msg.author.send(queue.songs[0].url);
     }
 };
