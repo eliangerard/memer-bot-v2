@@ -1,3 +1,6 @@
+const { getVoiceConnection, getGroups, joinVoiceChannel } = require('@discordjs/voice');
+const { addSpeechEvent } = require("discord-speech-recognition");
+
 module.exports = {
 	name: 'voiceStateUpdate',
 	once: false,

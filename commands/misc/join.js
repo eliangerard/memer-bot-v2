@@ -1,6 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { getVoiceConnection, getGroups, joinVoiceChannel } = require('@discordjs/voice');
-const { addSpeechEvent } = require("discord-speech-recognition");
 
 module.exports = {
 	data: new SlashCommandBuilder()
