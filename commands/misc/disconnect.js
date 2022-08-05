@@ -20,7 +20,7 @@ module.exports = {
         });
 
 	},
-	async executeVoice(msg, client) {
+	async executeVoice(content, msg, client) {
 
         const voiceJoined = await client.distube.voices.get(msg.member.voice.channel);
 		voiceJoined.leave();
