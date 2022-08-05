@@ -20,4 +20,17 @@ module.exports = {
         });
 
 	},
+	async executeVoice(msg, client) {
+
+        const voiceJoined = await client.distube.voices.get(msg.member.voice.channel);
+		voiceJoined.leave();
+		const embed = new EmbedBuilder()
+                .setTitle(client.emotes.success+" Adiós")
+                .setColor("#FFFFFF");
+
+        client.channel.send( { embeds: [embed] } ).then(msg => {
+            setTimeout(() => msg.delete(), 15000)
+        });
+
+	},
 };
