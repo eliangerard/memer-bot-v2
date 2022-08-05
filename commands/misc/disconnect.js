@@ -6,6 +6,7 @@ module.exports = {
 		.setName('disconnect')
 		.setDescription('Desconecta el bot del canal de voz'),
 	inVoice : true,
+	voiceCommand : ['salte', 'desconéctate'],
 	async execute(interaction, client) {
 
         const voiceJoined = await client.distube.voices.get(interaction.member.voice.channel);
