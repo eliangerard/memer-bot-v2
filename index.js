@@ -28,8 +28,15 @@ client.distube = new DisTube(client, {
       new YtDlpPlugin()
     ]
 });
+SpeechOptions = { 
+    group: client.config.clientId, 
+    lang: client.config.lang, 
+};
 
-addSpeechEvent(client, { group: client.config.clientId , lang: client.config.lang });
+if(client.config.speechAPI.length > 0)
+    SpeechOptions.key = client.config.speechAPI;
+
+addSpeechEvent(client, SpeechOptions );
 
 client.distube.status = queue => `Volumen: \`${queue.volume}%\` | Filtro: \`${queue.filters.names.join(", ") || "Off"}\` | Repitiendo: \`${queue.repeatMode ? queue.repeatMode === 2 ? "Toda la cola" : "Esta canción" : "Nada"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 

@@ -6,6 +6,7 @@
         "dbname" : "MONGODB_DATABASE_NAME"
     },
     "lang": "es-MX",
+    "speechAPI": "",
     "cdGif": "https://c.tenor.com/GqAwMt01UXgAAAAi/cd.gif",
     "botURL": "AVATAR_IMAGE_URL",
     "spotifyClientID" : "SPOTIFY_API_CLIENTID",
