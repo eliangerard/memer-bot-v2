@@ -5,7 +5,6 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('loop')
         .setDescription('Activa la repetición de, la queue o la canción')
-        .setRequired(true)
         .addIntegerOption(option =>
             option.setName('mode')
                 .setDescription('El modo de repetición')
