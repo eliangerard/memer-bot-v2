@@ -41,7 +41,6 @@ module.exports = {
                 if(json.UrlDownload)
                 download(Buffer.from(json.UrlDownload, 'base64').toString('utf8'), 'twvideo.mp4', async ()=>{
                     return await interaction.editReply({
-                        content: `Video de <@${interaction.member.id}>\n${json.title}`,
                         files: [{
                             attachment: './resources/twvideo.mp4',
                             name: 'twvideo.mp4'
@@ -50,51 +49,52 @@ module.exports = {
                 })
             });
         }
-        
-        const url = 'https://socialdownloader.p.rapidapi.com/api/facebook/video?video_link='+encodeURIComponent(link);
+        if(link.includes('facebook') || link.includes('fb')){
+            const url = 'https://socialdownloader.p.rapidapi.com/api/facebook/video?video_link='+encodeURIComponent(link);
 
-        const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': client.config.apis.rapidapikey,
-            'X-RapidAPI-Host': 'socialdownloader.p.rapidapi.com'
-            }
-        };
+            const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': client.config.apis.rapidapikey,
+                'X-RapidAPI-Host': 'socialdownloader.p.rapidapi.com'
+                }
+            };
 
-        fetch(url, options)
-        .then(res => res.json())
-        .then(async json => {
-            console.log(json);
-            if(json.body.videoHD)
-                download(json.body.videoHD, 'video.mp4', async ()=>{
-                    return await interaction.editReply({
-                        files: [{
-                            attachment: './resources/video.mp4',
-                            name: 'video.mp4'
-                        }]
-                    }).catch(error => {
-                        console.log(error);
-                        download(json.body.video, 'video.mp4', async ()=>{
-                            await interaction.editReply({
-                                files: [{
-                                    attachment: './resources/video.mp4',
-                                    name: 'video.mp4'
-                                }]
-                            }).catch(error => interaction.editReply("El video pesa mucho y no se armó con discord no dió chance"));
+            fetch(url, options)
+            .then(res => res.json())
+            .then(async json => {
+                console.log(json);
+                if(json.body.videoHD)
+                    download(json.body.videoHD, 'video.mp4', async ()=>{
+                        return await interaction.editReply({
+                            files: [{
+                                attachment: './resources/video.mp4',
+                                name: 'video.mp4'
+                            }]
+                        }).catch(error => {
+                            console.log(error);
+                            download(json.body.video, 'video.mp4', async ()=>{
+                                await interaction.editReply({
+                                    files: [{
+                                        attachment: './resources/video.mp4',
+                                        name: 'video.mp4'
+                                    }]
+                                }).catch(error => interaction.editReply("El video pesa mucho y no se armó con discord no dió chance"));
+                            });
                         });
+                    })
+                else 
+                    download(json.body.video, 'video.mp4', async ()=>{
+                        await interaction.editReply({
+                            files: [{
+                                attachment: './resources/video.mp4',
+                                name: 'video.mp4'
+                            }]
+                        }).catch(error => interaction.editReply("El video pesa mucho y no se armó con discord no dió chance"));
                     });
-                })
-            else 
-                download(json.body.video, 'video.mp4', async ()=>{
-                    await interaction.editReply({
-                        files: [{
-                            attachment: './resources/video.mp4',
-                            name: 'video.mp4'
-                        }]
-                    }).catch(error => interaction.editReply("El video pesa mucho y no se armó con discord no dió chance"));
-                });
 
-        })
-        .catch(err => interaction.editReply(`No se pudo descargar el video: ${err}`));
+            })
+            .catch(err => interaction.editReply(`No se pudo descargar el video: ${err}`));
+        }
     },
 };
