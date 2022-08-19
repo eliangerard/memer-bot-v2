@@ -36,24 +36,17 @@ module.exports = {
 
             fetch(url, options)
             .then(res => res.json() )
-            .then(json => {
+            .then(async json => {
                 console.log(json);
                 if(json.UrlDownload)
                 download(Buffer.from(json.UrlDownload, 'base64').toString('utf8'), 'twvideo.mp4', async ()=>{
-                    downloading.delete();
                     return await interaction.editReply({
                         content: `Video de <@${interaction.member.id}>\n${json.title}`,
                         files: [{
                             attachment: './twvideo.mp4',
                             name: 'twvideo.mp4'
                         }]
-                    }).catch(error => {
-                        const embed = new Discord.MessageEmbed()
-                        .setTitle(client.emotes.success + " Error")
-                        .setDescription(""+error)
-                        .setColor("#FF0000")
-                        return interaction.editReply({ embeds: [embed] });
-                    })
+                    }).catch(err => interaction.editReply(`No se pudo descargar el video: ${err}`));
                 })
             });
         }
