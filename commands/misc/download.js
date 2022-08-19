@@ -61,6 +61,7 @@ module.exports = {
                         }]
                     }).catch(error => interaction.editReply("El video pesa mucho y no se armó con discord no dió chance"));
                 });
+                
         })
         .catch(err => interaction.editReply(`No se pudo descargar el video: ${err}`));
     },
