@@ -39,7 +39,7 @@ module.exports = {
             .then(json => {
                 console.log(json);
                 if(json.UrlDownload)
-                download(base64.decode(json.UrlDownload), 'twvideo.mp4', async ()=>{
+                download(Buffer.from(json.UrlDownload, 'base64').toString('utf8'), 'twvideo.mp4', async ()=>{
                     downloading.delete();
                     return await interaction.editReply({
                         content: `Video de <@${interaction.member.id}>\n${json.title}`,
