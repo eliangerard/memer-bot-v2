@@ -43,13 +43,14 @@ module.exports = {
                     return await interaction.editReply({
                         content: `Video de <@${interaction.member.id}>\n${json.title}`,
                         files: [{
-                            attachment: './twvideo.mp4',
+                            attachment: './resources/twvideo.mp4',
                             name: 'twvideo.mp4'
                         }]
                     }).catch(err => interaction.editReply(`No se pudo descargar el video: ${err}`));
                 })
             });
         }
+        
         const url = 'https://socialdownloader.p.rapidapi.com/api/facebook/video?video_link='+encodeURIComponent(link);
 
         const options = {
