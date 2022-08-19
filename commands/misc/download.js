@@ -20,6 +20,16 @@ module.exports = {
         const link = interaction.options.getString('link');
 
         if(link.includes('twitter')){
+            const options = {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/x-www-form-urlencoded',
+                  'X-RapidAPI-Key': client.config.apis.rapidapikey,
+                  'X-RapidAPI-Host': 'popular-video-downloader.p.rapidapi.com'
+                },
+                body: encodedParams
+            };
+
             const url = 'https://popular-video-downloader.p.rapidapi.com/twitter';
 
             fetch(url, options)
