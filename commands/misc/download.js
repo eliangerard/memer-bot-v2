@@ -19,6 +19,32 @@ module.exports = {
 	async execute(interaction, client) {
         const link = interaction.options.getString('link');
 
+        if(link.includes('twitter')){
+            const url = 'https://popular-video-downloader.p.rapidapi.com/twitter';
+
+            fetch(url, options)
+            .then(res => res.json() )
+            .then(json => {
+                console.log(json);
+                if(json.UrlDownload)
+                download(base64.decode(json.UrlDownload), 'twvideo.mp4', async ()=>{
+                    downloading.delete();
+                    return await interaction.editReply({
+                        content: `Video de <@${interaction.member.id}>\n${json.title}`,
+                        files: [{
+                            attachment: './twvideo.mp4',
+                            name: 'twvideo.mp4'
+                        }]
+                    }).catch(error => {
+                        const embed = new Discord.MessageEmbed()
+                        .setTitle(client.emotes.success + " Error")
+                        .setDescription(""+error)
+                        .setColor("#FF0000")
+                        return interaction.editReply({ embeds: [embed] });
+                    })
+                })
+            });
+        }
         const url = 'https://socialdownloader.p.rapidapi.com/api/facebook/video?video_link='+encodeURIComponent(link);
 
         const options = {
@@ -61,7 +87,7 @@ module.exports = {
                         }]
                     }).catch(error => interaction.editReply("El video pesa mucho y no se armó con discord no dió chance"));
                 });
-                
+
         })
         .catch(err => interaction.editReply(`No se pudo descargar el video: ${err}`));
     },
