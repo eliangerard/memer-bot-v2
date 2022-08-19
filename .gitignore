@@ -14,6 +14,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 config.json
 package-lock.json
 node_modules
+resources/*
 # Runtime data
 pids
 *.pid
