@@ -20,6 +20,8 @@ module.exports = {
         const link = interaction.options.getString('link');
 
         if(link.includes('twitter')){
+            const encodedParams = new URLSearchParams();
+            encodedParams.append("videoUrl", link);
             const options = {
                 method: 'POST',
                 headers: {
