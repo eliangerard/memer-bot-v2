@@ -50,9 +50,9 @@ module.exports = {
     inVoice : false,
     voiceCommand : ['cola', 'lista'],
 	async execute(interaction, client) {
-        const queue = client.distube.getQueue(interaction.guild);
+        const queue = await client.distube.getQueue(interaction.guild);
         page = 0;
-        if(queue.songs == undefined)
+        if(!queue.songs)
             interaction.editReply("No se está reproduciendo nada");
         totalPages = Math.ceil(queue.songs.length/10);
         if(args.length > 1) return;
