@@ -5,10 +5,9 @@ let page;
 let totalPages;
 let q;
 let header;
-const status = queue => `Volumen: \`${queue.volume}%\` | Filtro: \`${queue.filters.join(", ") || "Off"}\` | Repitiendo: \`${queue.repeatMode ? queue.repeatMode === 2 ? "Toda la cola" : "Esta canción" : "Nada"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
 const updateQueue = (queue) => {
-    header = `**Reproduciendo:** ${queue.songs[0].name} - \`${queue.songs[0].formattedDuration}\`\n ${status(queue)}`;
+    header = `**Reproduciendo:** ${queue.songs[0].name} - \`${queue.songs[0].formattedDuration}\`\n ${client.distube.status(queue)}`;
     q = ``;
     for(let i = page*10+1; i < (queue.songs.length > (page*10)+11 ? page*10+11 : queue.songs.length); i++)
         q += `**${i}.** ${queue.songs[i].name} - \`${queue.songs[i].formattedDuration}\`\n`;
