@@ -53,7 +53,7 @@ module.exports = {
         const queue = await client.distube.getQueue(interaction.guild);
         page = 0;
         if(!queue?.songs)
-            interaction.editReply("No se está reproduciendo nada");
+            return interaction.editReply("No se está reproduciendo nada");
         totalPages = Math.ceil(queue.songs.length/10);
         if(args.length > 1) return;
         if (!queue) {
