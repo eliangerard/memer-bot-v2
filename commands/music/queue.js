@@ -52,10 +52,19 @@ module.exports = {
 	async execute(interaction, client) {
         const queue = await client.distube.getQueue(interaction.guild);
         page = 0;
-        if(!queue?.songs)
-            return interaction.editReply("No se está reproduciendo nada");
+        if(!queue?.songs){
+            const embed = new EmbedBuilder()
+                .setTitle(client.emotes.error+" Error")
+                .setColor("#FF0000")
+                .setDescription("No se está reproduciendo nada")
+                .setTimestamp()
+                .setFooter({ text : 'Memer', iconURL : client.botURL });
+
+            return interaction.editReply( { embeds: [embed] } ).then(msg => {
+                setTimeout(() => msg.delete(), 15000)
+            });
+        }
         totalPages = Math.ceil(queue.songs.length/10);
-        if(args.length > 1) return;
         if (!queue) {
             const embed = new EmbedBuilder()
                 .setTitle(client.emotes.error+" Error")
@@ -88,8 +97,19 @@ module.exports = {
     async executeVoice (content, msg, client) {
         const queue = client.distube.getQueue(msg.guild);
         page = 0;
+        if(!queue?.songs){
+            const embed = new EmbedBuilder()
+                .setTitle(client.emotes.error+" Error")
+                .setColor("#FF0000")
+                .setDescription("No se está reproduciendo nada")
+                .setTimestamp()
+                .setFooter({ text : 'Memer', iconURL : client.botURL });
+
+            return client.channel.send( { embeds: [embed] } ).then(msg => {
+                setTimeout(() => msg.delete(), 15000)
+            });
+        }
         totalPages = Math.ceil(queue.songs.length/10);
-        if(args.length > 1) return;
         if (!queue) {
             const embed = new EmbedBuilder()
                 .setTitle(client.emotes.error+" Error")
