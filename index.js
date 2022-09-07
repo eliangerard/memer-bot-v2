@@ -22,7 +22,12 @@ client.distube = new DisTube(client, {
     emitAddListWhenCreatingQueue: false,
     plugins: [
       new SpotifyPlugin({
-        emitEventsAfterFetching: true
+        parallel: true,
+        emitEventsAfterFetching: false,
+        api: {
+          clientId: client.config.spotifyClientID,
+          clientSecret: client.config.spotifyClientSecret,
+        },
       }),
       new SoundCloudPlugin(),
       new YtDlpPlugin()
