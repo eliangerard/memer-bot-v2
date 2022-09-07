@@ -15,7 +15,7 @@ const updateQueue = (queue) => {
     q += `\n*Página: ${(page+1)+"/"+totalPages}*`;
 }
 
-const handler = (reaction, user) => {
+const handler = (reaction, user, msg) => {
     if(reaction.message.id == msg.id && !user.bot){
         if(reaction.emoji.name == "✅"){                        
             client.removeListener('messageReactionAdd', handler)
@@ -91,7 +91,7 @@ module.exports = {
             msg.react('⬅️');
             msg.react('➡️');
             msg.react('✅');
-            client.on('messageReactionAdd', handler); 
+            client.on('messageReactionAdd', handler(reaction, user, msg)); 
         });
 	},
     async executeVoice (content, msg, client) {
@@ -136,7 +136,7 @@ module.exports = {
             msg.react('⬅️');
             msg.react('➡️');
             msg.react('✅');
-            client.on('messageReactionAdd', handler); 
+            client.on('messageReactionAdd', handler(reaction, user, msg)); 
         });
     }
 };
