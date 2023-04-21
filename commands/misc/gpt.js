@@ -27,7 +27,7 @@ module.exports = {
 
         let headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + client.config.apis.gpt
+            'Authorization': 'Bearer ' + client.config.gpt
         };
 
         let config = {
@@ -35,7 +35,7 @@ module.exports = {
             headers: headers,
             body: data
         };
-        console.log(client.config.apis.gpt)
+        console.log(client.config.gpt)
         let response = await fetch(url, config)
         .then(res => {
             console.log(res)
