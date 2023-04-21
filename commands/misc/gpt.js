@@ -1,4 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
+const HttpsProxyAgent = require('https-proxy-agent');
+const proxy = 'http://109.254.37.40:9090';
+const agent = new HttpsProxyAgent(proxy);
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -33,7 +36,8 @@ module.exports = {
         let config = {
             method: 'POST',
             headers: headers,
-            body: data
+            body: data,
+            agent
         };
         console.log(client.config.gpt)
         let response = await fetch(url, config);
