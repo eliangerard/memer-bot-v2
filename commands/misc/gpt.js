@@ -36,15 +36,11 @@ module.exports = {
             body: data
         };
         console.log(client.config.gpt)
-        let response = await fetch(url, config)
-        .then(res => {
-            console.log(res)
-            res.json()
-        })
-        .then(res => res)
-        .catch(err => console.log(err));
+        let response = await fetch(url, config);
+        let result = await response.json();
+        console.log(result.choices[0].message.content);
         
-        return interaction.editReply({ content: response.choices[0].message.content, ephemeral: false });
+        return interaction.editReply({ content: result.choices[0].message.content, ephemeral: false });
     },
     async executeVoice(content, msg, client) {
         const queue = client.distube.getQueue(msg.guild);
