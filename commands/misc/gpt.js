@@ -37,7 +37,10 @@ module.exports = {
         };
         
         let response = await fetch(url, config)
-        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            res.json()
+        })
         .then(res => res)
         .catch(err => console.log(err));
         
