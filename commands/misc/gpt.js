@@ -35,7 +35,7 @@ module.exports = {
             headers: headers,
             body: data
         };
-        
+        console.log(client.config.apis.gpt)
         let response = await fetch(url, config)
         .then(res => {
             console.log(res)
