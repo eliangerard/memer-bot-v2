@@ -37,6 +37,7 @@ module.exports = {
         };
         console.log(client.config.gpt)
         let response = await fetch(url, config);
+        console.log(response)
         let result = await response.json();
         console.log(result.choices[0].message.content);
         
