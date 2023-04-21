@@ -3,20 +3,22 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('gpt')
-        .setDescription('Envía un mensaje a chat gpt'),
+        .setDescription('Envía un mensaje a chat gpt')
+        .addStringOption(option => option.setName('query').setDescription('Tu mensaje').setRequired(true)),
     inVoice: false,
     voiceCommand: ['chat'],
     async execute(interaction, client) {
+        const query = interaction.options.getString('query');
         let data = JSON.stringify({
             "model": "gpt-3.5-turbo",
             "messages": [
                 {
                     "role": "system",
-                    "content": "Act as a translator."
+                    "content": "Eres un miembro de un servidor de discord muy gracioso y que usa un asento mexicano"
                 },
                 {
                     "role": "user",
-                    "content": "Translate 'door' into german."
+                    "content": query
                 }
             ]
         });
