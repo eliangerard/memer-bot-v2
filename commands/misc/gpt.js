@@ -1,7 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const HttpsProxyAgent = require('https-proxy-agent');
-const proxy = 'http://109.254.37.40:9090';
-const agent = new HttpsProxyAgent(proxy);
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -11,41 +8,17 @@ module.exports = {
     inVoice: false,
     voiceCommand: ['chat'],
     async execute(interaction, client) {
+        const { ChatGPTUnofficialProxyAPI } = await import('chatgpt');
         const query = interaction.options.getString('query');
-        let data = JSON.stringify({
-            "model": "gpt-3.5-turbo",
-            "messages": [
-                {
-                    "role": "system",
-                    "content": "Eres un miembro de un servidor de discord muy gracioso y que usa un asento mexicano"
-                },
-                {
-                    "role": "user",
-                    "content": query
-                }
-            ]
-        });
 
-        let url = 'https://api.pawan.krd/v1/chat/completions';
+        const api = new ChatGPTUnofficialProxyAPI({
+            accessToken: client.config.gptAccessToken,
+            apiReverseProxyUrl: "https://ai.fakeopen.com/api/conversation"
+        })
 
-        let headers = {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + client.config.gpt
-        };
+        const res = await api.sendMessage(query)
 
-        let config = {
-            method: 'POST',
-            headers: headers,
-            body: data,
-            agent
-        };
-        console.log(client.config.gpt)
-        let response = await fetch(url, config);
-        console.log(response)
-        let result = await response.json();
-        console.log(result.choices[0].message.content);
-        
-        return interaction.editReply({ content: result.choices[0].message.content, ephemeral: false });
+        return interaction.editReply({ content: res.text, ephemeral: false });
     },
     async executeVoice(content, msg, client) {
         const queue = client.distube.getQueue(msg.guild);

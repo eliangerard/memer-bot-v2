@@ -1,6 +1,7 @@
 {
     "clientId" : "HERE",
     "token": "DISCORD_BOT_TOKEN",
+    "gptAccessToken":"GET IT FROM HERE WHILE LOGGED IN https://chat.openai.com/api/auth/session",
     "mongodb": {
         "stringKey" : "MONGODB_STRING_CONNECTION",
         "dbname" : "MONGODB_DATABASE_NAME"
@@ -36,7 +37,6 @@
     }, 
     "apis": {
         "rapidapikey": "RAPID_API_KEY (THE SAME IN EVERY API)",
-        "gpt" : "KEY OBTAINED FROM 'https://github.com/PawanOsman/ChatGPT#use-our-hosted-api'",
         "traductor" : {
             "default": "DEFAULT TRADUCTION LANG ('en', 'es', 'ru', etc.)"
         },
