@@ -18,7 +18,7 @@ module.exports = {
         })
         let res;
         if( conversationId )
-            res = await api.sendMessage(query, { conversationId, parentMessageId, onProgress : (progress) => {
+            res = await api.sendMessage(query, { conversationId , onProgress : (progress) => {
                 interaction.editReply({ content: progress.text , ephemeral : false });
             }})
         else {
