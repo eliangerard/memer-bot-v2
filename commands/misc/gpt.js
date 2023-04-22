@@ -19,11 +19,11 @@ module.exports = {
         let res;
         if( conversationId )
             res = await api.sendMessage(query, { conversationId, parentMessageId, onProgress : (progress) => {
-                interaction.editReply({ content: `Cargando respuesta (${progress}%)` , ephemeral : false });
+                interaction.editReply({ content: progress.text , ephemeral : false });
             }})
         else {
             res = await api.sendMessage(query, { onProgress : (progress) => {
-                interaction.editReply({ content: `Cargando respuesta (${progress}%)` , ephemeral : false });
+                interaction.editReply({ content: progress.text , ephemeral : false });
             }});
             conversationId = res.conversationId;
             parentMessageId = res.parentMessageId;
